@@ -413,10 +413,10 @@ Examine the Mongo Headless Service
 oc get svc
 ```
 
-Examine the DNS records for the Mongo Headless Service
+Examine the DNS records for the Mongo Headless Service.  NOTE that this differs from the forked repo because it removed the depricated --template flag. Check out [this](https://chat.openai.com/share/c3903697-136a-420e-9b5a-aedef954acc6) chat.
 
 ```
-oc run --generator=run-pod/v1 --rm utils -it --image eddiehale/utils bash
+oc run utils --image=eddiehale/utils --restart=Never -it -- /bin/bash; oc delete pod utils
 ```
 
 Within the new utils container run the following DNS queries
