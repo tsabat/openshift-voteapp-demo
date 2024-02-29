@@ -298,7 +298,7 @@ oc get storageclass
 
 # STEP11:
 
-Create a new Mongo StatefulSet name ```mongo```
+Create a new Mongo StatefulSet name ```mongo```.  Note that this is different from the forked repo because we're using the storageClassName of `crc-csi-hostpath-provisioner` because we're running in OpenShift Local.
 
 ```
 cat <<EOF | oc create -f -
@@ -359,7 +359,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: ebs
+        storageClassName: crc-csi-hostpath-provisioner
         resources:
           requests:
             storage: 0.5Gi
